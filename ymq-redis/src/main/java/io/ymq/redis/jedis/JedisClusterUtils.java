@@ -58,10 +58,15 @@ public class JedisClusterUtils {
 
         Set<HostAndPort> hps = new HashSet<HostAndPort>();
 
-        String redisClusterIp = "10.4.89.161:6379";
-        String[] ip = redisClusterIp.split(":");
-        int port = Integer.valueOf(ip[1]);
-        hps.add(new HostAndPort(ip[0], port));
+        String redisClusterIps = "172.31.3.91:6380,172.31.3.91:6381,172.31.3.91:6382,172.31.3.92:6380,172.31.3.92:6381,172.31.3.92:6382,172.31.3.93:6380,172.31.3.93:6381,172.31.3.93:6382";
+
+        String[] hostArray = redisClusterIps.split(",");
+
+        for(String host : hostArray)
+        {
+            String[] detail = host.split(":");
+            hps.add( new HostAndPort(detail[0] , Integer.parseInt(detail[1])) );
+        }
 
         jedisCluster = new JedisCluster(hps, config);
 

@@ -42,9 +42,9 @@ public class BaseTest {
     @Test
     public void cacheUtilsTest() {
 
-        CacheUtils.saveString("cluster-key", "www.ymq.io");
+        CacheUtils.saveString("cluster-key2", "www.ymq.io2");
 
-        System.out.println(CacheUtils.getString("cluster-key"));
+        System.out.println(CacheUtils.getString("cluster-key2"));
 
     }
 
